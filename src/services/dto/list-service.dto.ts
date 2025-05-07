@@ -13,13 +13,13 @@ export class ListServiceDto {
   @IsInt()
   @Min(1)
   @Max(100)
-  pageSize?: number = 10;
+  limit?: number = 10;
 }
 
 export class PaginationMeta {
   total: number;
+  limit: number;
   page: number;
-  pageSize: number;
   totalPages: number;
 }
 

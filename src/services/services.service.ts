@@ -10,28 +10,28 @@ export class ServicesService {
   async listServices(
     query: ListServiceDto,
   ): Promise<PaginatedResponse<ServiceResponseDto>> {
-    const { page = 1, pageSize = 10 } = query;
-    const skip = (page - 1) * pageSize;
+    const { page = 1, limit = 10 } = query;
+    const skip = (page - 1) * limit;
 
     const [total, services] = await Promise.all([
       this.prisma.service.count(),
       this.prisma.service.findMany({
         skip,
-        take: pageSize,
+        take: limit,
         orderBy: {
           createdAt: 'desc',
         },
       }),
     ]);
 
-    const totalPages = Math.ceil(total / pageSize);
+    const totalPages = Math.ceil(total / limit);
 
     return {
       data: services,
       meta: {
         total,
+        limit,
         page,
-        pageSize,
         totalPages,
       },
     };
