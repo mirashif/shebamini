@@ -6,6 +6,18 @@ import { BookingStatus } from '@prisma/client';
 
 @Injectable()
 export class BookingsService {
+  async getBooking(id: string): Promise<BookingResponseDto> {
+    const booking = await this.prisma.booking.findUnique({
+      where: { id },
+    });
+
+    if (!booking) {
+      throw new NotFoundException(`Booking with ID ${id} not found`);
+    }
+
+    return booking;
+  }
+
   constructor(private prisma: PrismaService) {}
 
   async createBooking(data: CreateBookingDto): Promise<BookingResponseDto> {

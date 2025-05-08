@@ -22,7 +22,7 @@ model Service {
 }
 
 model Booking {
-  id           String        @id @default(uuid())
+  id           String        @id @default(ulid())
   customerName String
   phoneNumber  String
   service      Service       @relation(fields: [serviceId], references: [id])
