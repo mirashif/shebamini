@@ -31,7 +31,7 @@ async function main() {
     'Care',
   ];
 
-  const services: Prisma.ServiceCreateInput[] = Array.from(
+  const items: Prisma.ListingCreateInput[] = Array.from(
     { length: 100 },
     (_, index) => {
       const category =
@@ -50,9 +50,9 @@ async function main() {
     },
   );
 
-  for (const service of services) {
-    await prisma.service.create({
-      data: service,
+  for (const data of items) {
+    await prisma.listing.create({
+      data,
     });
   }
 }

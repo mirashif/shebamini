@@ -1,4 +1,4 @@
-export class ServiceResponseDto {
+export class ListingResponseDto {
   id: number;
   name: string;
   category: string;

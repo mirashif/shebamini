@@ -22,13 +22,13 @@ export class BookingsService {
 
   async createBooking(data: CreateBookingDto): Promise<BookingResponseDto> {
     // Check if service exists
-    const service = await this.prisma.service.findUnique({
-      where: { id: data.serviceId },
+    const service = await this.prisma.listing.findUnique({
+      where: { id: data.listingId },
     });
 
     if (!service) {
       throw new NotFoundException(
-        `Service with ID ${data.serviceId} not found`,
+        `Service with ID ${data.listingId} not found`,
       );
     }
 
@@ -37,7 +37,7 @@ export class BookingsService {
       data: {
         customerName: data.customerName,
         phoneNumber: data.phoneNumber,
-        serviceId: data.serviceId,
+        listingId: data.listingId,
         status: BookingStatus.PENDING,
       },
     });

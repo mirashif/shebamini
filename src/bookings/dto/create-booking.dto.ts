@@ -11,5 +11,5 @@ export class CreateBookingDto {
   phoneNumber: string;
 
   @IsInt()
-  serviceId: number;
+  listingId: number;
 }

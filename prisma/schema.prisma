@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Service {
+model Listing {
   id          Int       @id @default(autoincrement())
   name        String
   category    String
@@ -25,8 +25,8 @@ model Booking {
   id           String        @id @default(ulid())
   customerName String
   phoneNumber  String
-  service      Service       @relation(fields: [serviceId], references: [id])
-  serviceId    Int
+  listing      Listing       @relation(fields: [listingId], references: [id])
+  listingId    Int
   status       BookingStatus
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt

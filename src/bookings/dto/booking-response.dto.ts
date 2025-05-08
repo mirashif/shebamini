@@ -4,7 +4,7 @@ export class BookingResponseDto {
   id: string;
   customerName: string;
   phoneNumber: string;
-  serviceId: number;
+  listingId: number;
   status: BookingStatus;
   createdAt: Date;
   updatedAt: Date;

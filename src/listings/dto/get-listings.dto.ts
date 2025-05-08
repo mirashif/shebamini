@@ -1,7 +1,7 @@
 import { IsInt, IsOptional, Max, Min } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class ListServiceDto {
+export class GetListingsDto {
   @IsOptional()
   @Type(() => Number)
   @IsInt()

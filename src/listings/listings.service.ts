@@ -1,21 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { ListServiceDto, PaginatedResponse } from './dto/list-service.dto';
-import { ServiceResponseDto } from './dto/service-response.dto';
+import { GetListingsDto, PaginatedResponse } from './dto/get-listings.dto';
+import { ListingResponseDto } from './dto/listings-response.dto';
 
 @Injectable()
-export class ServicesService {
+export class ListingsService {
   constructor(private prisma: PrismaService) {}
 
-  async listServices(
-    query: ListServiceDto,
-  ): Promise<PaginatedResponse<ServiceResponseDto>> {
+  async getListings(
+    query: GetListingsDto,
+  ): Promise<PaginatedResponse<ListingResponseDto>> {
     const { page = 1, limit = 10 } = query;
     const skip = (page - 1) * limit;
 
-    const [total, services] = await Promise.all([
-      this.prisma.service.count(),
-      this.prisma.service.findMany({
+    const [total, listings] = await Promise.all([
+      this.prisma.listing.count(),
+      this.prisma.listing.findMany({
         skip,
         take: limit,
         orderBy: {
@@ -27,7 +27,7 @@ export class ServicesService {
     const totalPages = Math.ceil(total / limit);
 
     return {
-      data: services,
+      data: listings,
       meta: {
         total,
         limit,
