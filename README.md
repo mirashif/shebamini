@@ -2,9 +2,19 @@
 
 Tech Stack: TypeScript, Node.js, NestJS, Prisma, SQLite, Jest, Docker
 
+## Assumptions
+
+You should have pnpm@10.10.0, and node@22 installed.
+
 ## Setup & Running Instruction
 
-- [ ]
+- Install project dependencies using `pnpm i`
+- Make `.env` from `.env.example`, values are already set in the example file
+- Run the app using `pnpm start:dev`
+- You should see console outputs coming from NestJS
+- You can open Swagger documentation UI/JSON spec using the links below
+- You can also view the database on the browser using `pnpm prisma studio` command
+- If the database is empty, run `pnpm prisma db push` to sync the db schema and run `pnpm prisma db seed` to seed the db with listing data (which runs ./prisma/seed.ts script)
 
 ## API Documentation
 
@@ -13,11 +23,7 @@ Tech Stack: TypeScript, Node.js, NestJS, Prisma, SQLite, Jest, Docker
 
 ## How To Run Tests
 
-- [ ]
-
-## Assumptions
-
-- [ ]
+You can run the unit tests using `pnpm test` command which will run all the jest tests described in \*.spec.ts files in the repo.
 
 ---
 
@@ -31,10 +37,6 @@ Tech Stack: TypeScript, Node.js, NestJS, Prisma, SQLite, Jest, Docker
 
 ### Unit Testing
 
-- [ ] Service listing
-- [ ] Booking creation
-- [ ] Booking status retrieval
-
-### Bonus Features
-
-- [ ] Dockerize the app
+- [x] Service listing
+- [x] Booking creation
+- [x] Booking status retrieval
